@@ -17,7 +17,7 @@ end
 
 if !opts[:newbook].nil?
 	puts "foi"
-	libr.create_book "book_name"
+	libr.create_book opts[:newbook]
 	exit(0)	
 end
 

@@ -8,7 +8,11 @@ class Libr
 			puts "Creating a new book #{name}"
 			addr = File.join File.dirname(File.expand_path(__FILE__)), "../vendor/struct.zip"
 			system "mkdir #{name}"
-			system "unzip -r #{addr.to_s} ./#{name}"
+			unzip_line = "unzip #{addr.to_s} -d ./#{name} -q"
+			puts unzip_line
+			system unzip_line
+			system "mv ./#{name}/structure/* ./#{name}/"
+			system "rm -rf ./#{name}/structure"
 		end
 	end
 
