@@ -6,8 +6,18 @@ Gem::Specification.new do |s|
   s.description = "Digital books framework based on abstract xml definitions"
   s.authors     = ["Arthur Tofani"]
   s.email       = 'gramofone@gmail.com'
-  s.files       = ["lib/libr.rb"]
+  s.files = Dir["{lib,vendor,bin}/**/*"] + Dir["*"]
+#  s.files       = [
+#	"lib/libr.rb", 
+#	"lib/libr/document.rb"
+#	]
+
+  s.add_runtime_dependency 'hpricot',  '>= 0.8.6'
+  s.add_runtime_dependency 'trollop',  '>= 2.0'
+
+  s.executables << 'libr'
   s.homepage    =
     'http://rubygems.org/gems/libr'
   s.license       = 'GPL-2'
 end
+

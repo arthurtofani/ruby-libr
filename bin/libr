@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'libr'
+require 'trollop'
+require 'trollop'
+
+libr = Libr.new
+
+opts = Trollop::options do
+  banner "Usage: libr [command] [args] "
+  opt :newbook, "Create a new book", :short => "-n", :type => String
+  opt :templates, "Show installed templates", :short => "-t"
+  opt :environments, "Show current environments", :short => "-l"
+  opt :new_environment, "Create a new environment", :short => "-e", :type => String
+  opt :build, "Build. Pass environments as parameters or none for all (default) ", :short => "-b", :type => String
+  opt :index,  "Create all indexes"
+end
+
+if !opts[:newbook].nil?
+	puts "foi"
+	libr.create_book "book_name"
+	exit(0)	
+end
+
+
+
