@@ -1,7 +1,8 @@
 require 'libr/book'
+require 'libr/environment'
 class Libr
-	def isrepo
-		ct = Dir.entries('.').select {|x| x==".librdata"}.count
+	def isrepo path
+		ct = Dir.entries(path).select {|x| x==".librdata"}.count
 		return ct>0
 	end
 	def create_book(name)
@@ -33,15 +34,33 @@ class Libr
 		
 	end
 
+	def load_plugins path
+		script_path = File.expand_path(File.join("#{path}", "envs", @name, "scripts"))
+		puts "Loading scripts at #{script_path}"
+		arr = Dir[File.join(script_path, "*.rb")]
+		arr.each {|file| load File.join(path, "envs", @name, "scripts",  File.basename(file)) }
+	end
+
+
 	def build
-		if !isrepo
+		path = "./repotest"		# trocar por "."
+		if !isrepo path
 			puts "Not a book repo"
 			exit(1)
 		end
-		
-		b = Book.new File.expand_path(".")
+
+		# start plugins
+		load_plugins path
+
+
+		b = Book.new File.expand_path(path)
 		b.load_files
 		b.set_ids
+		envs_path = File.join(path, "envs")		
+		envs = Dir.entries(envs_path).select{|x| x[0]!="."}
+		envs.each do |env|
+			e = Environment.new(env, b)
+		end
 		
 	end
 end

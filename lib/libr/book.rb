@@ -1,12 +1,12 @@
 require 'hpricot'
 
 class Book
-	attr_accessor :path, :docs, :dict_elements, :stack_namespaces
+	attr_accessor :path, :docs
 	def initialize(path)
 		@path = path
 		@docs = []
-		@dict_elements = {}
-		@stack_namespaces = []
+		@doc = ""
+
 	end
 
 	def load_files
@@ -17,20 +17,20 @@ class Book
 
 	def load_file(file)
 		doc = open(file) { |f| Hpricot(f) }		
-		@docs.push doc
+		@docs.push ({document: doc, stack: {}})
 	end
 
 	def set_ids
 		@docs.each do |doc|
 			i = 0
-			doc.children.each do |ch|
-				insert_ids(ch) if i>0
+			doc[:document].children.each do |ch|
+				insert_ids(ch, doc) if i>0
 				i+=1
 			end
 		end
 	end
 
-	def insert_ids(el)
+	def insert_ids(el, doc_object)
 		if el.class==Hpricot::Elem
 			dict_elements[el.name] = [] if dict_elements[el.name].nil?
 			dict_elements[el.name].push el
@@ -39,7 +39,7 @@ class Book
 				el.attributes["id"] = el.name + "_" + v.to_s
 			end
 			if el.name.downcase=="env" && !el.attributes["xmlns"].empty?
-				@stack_namespaces.push ({element: el.attributes["id"], parent: el.parent.attributes["id"]})
+				doc_object[:stack].push ({element: el.attributes["id"], parent: el.parent.attributes["id"]})
 			end
 			chil = el.children rescue nil
 			return if chil.nil?
