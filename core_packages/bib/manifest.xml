@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>bib</name>
+	<description>
+		Describes bibliography data
+	</description>
+	<schema>bib.xsd<schema>
+	<namespace>http://tofani.com.br/bib<namespace>
+</libr-package>

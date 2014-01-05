@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>simplevideo</name>
+	<description>
+		Describes a video to be played. <br />
+	</description>
+	<processor type="html">
+		<description>
+			HTML5 processor receives the source in any ffmpeg format and renders
+			to the main formats for html5 browsers: ogg, mp4 and WebM
+		</description>
+	</processor>
+	<dependencies>
+		<dependency>
+			<name>ffmpeg</name>
+			<version mod="gt">1.0</version>
+		</dependency>
+	</dependencies>
+	<schema>paintpic.xsd<schema>
+	<namespace>http://tofani.com.br/libr/packages/paintpic<namespace>
+</libr-package>

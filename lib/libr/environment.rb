@@ -38,7 +38,7 @@ module Libr
 		# identifier	:	A symbol to recall indexed elements
 
 		def generate_index (dom_path, identifier, parent)
-			if
+			
 		end
 
 		def load_path
@@ -85,7 +85,7 @@ module Libr
 	end
 
 	class BookPage
-		
+		attr_accessor :filename, :content
 	end
 
 	class ElementIndexStructure

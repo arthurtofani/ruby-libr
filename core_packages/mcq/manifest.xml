@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>mcq</name>
+	<description>
+		Describes multiple choice questions, containing questions, answers (signed with right and wrong) and solutions.
+	</description>
+	<schema>mcq.xsd<schema>
+	<namespace>http://tofani.com.br/libr/packages/mcq<namespace>
+</libr-package>

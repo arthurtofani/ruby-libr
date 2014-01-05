@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>scorm_content</name>
+	<description>
+		Describes a scorm package
+	</description>
+	<schema>scorm_content.xsd<schema>
+	<namespace>http://tofani.com.br/libr/packages/scorm_content<namespace>
+</libr-package>

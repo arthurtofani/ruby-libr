@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>imggallery</name>
+	<description>
+		Describes a picture to be painted by the user
+	</description>
+	<schema>imggallery.xsd<schema>
+	<namespace>http://tofani.com.br/libr/packages/imggallery<namespace>
+</libr-package>

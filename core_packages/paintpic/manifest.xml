@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>bib</name>
+	<description>
+		Describes a picture to be painted by the user
+	</description>
+	<schema>paintpic.xsd<schema>
+	<namespace>http://tofani.com.br/libr/packages/paintpic<namespace>
+</libr-package>

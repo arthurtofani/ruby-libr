@@ -1,6 +1,6 @@
 module Libr
 	class Processor
-		def proc(doc)
+		def proc(element)
 			raise "You must extend this class!"
 		end
 	end
