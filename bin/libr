@@ -3,7 +3,7 @@ require 'libr'
 require 'trollop'
 require 'trollop'
 
-libr = Libr.new
+libr = Libr.instance
 
 opts = Trollop::options do
   banner "Usage: libr [command] [args] "
