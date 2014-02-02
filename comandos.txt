@@ -1,0 +1,7 @@
+b = Book.new "./repotest"
+b.load_files
+b.set_ids
+b.dump
+
+l = Libr.new
+l.build
