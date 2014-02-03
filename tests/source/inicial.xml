@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section type="collection" id="colecao_dsop" lang="pt-BR" xmlns="http://localhost/libr/core_packages/1.0/core_packages.zip">
+	<title>Coleção DSOP de Educação Financeira</title>
+	<section type="book" id="5aEF1">
+		<title>Fundamental I - 5o ano</title>
+		<section type="unit" id="unit_diagnosticar">
+			<title>Diagnosticar</title>
+			<section type="chapter" id="ch_1_1">
+				<title>Coloque em prática</title>
+				<include path="p14.xml" />
+				<include path="p15.xml" />
+				<include path="p16.xml" />
+				<include path="p17.xml" />
+			</section>
+		</section>	
+	</section>
+</section>

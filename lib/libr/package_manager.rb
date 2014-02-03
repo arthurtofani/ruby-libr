@@ -12,19 +12,19 @@ module Libr
 
 
 		def installed? xmlns
-			f = File.join(package_path(xmlns), "install.log")
+			f = File.join(get_package_path(xmlns), "install.log")
 			return File.exist? f
 		end
 
 		def create_logfile xmlns
-			f = File.join(package_path(xmlns), "install.log")
+			f = File.join(get_package_path(xmlns), "install.log")
 			File.open(f, 'w') {|f| f.write(Time.now.to_s) }
 			return File.exist? f
 		end
 
-		def package_path xmlns
-			ns = @xmlns
-			File.join(File.dirname(ns), File.basename(ns, File.extname(ns)))
+		def get_package_path xmlns
+			ns = xmlns
+			File.join(@package_path, File.dirname(ns), File.basename(ns, File.extname(ns)))
 		end		
 
 		def fetch_package xmlns

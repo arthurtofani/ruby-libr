@@ -8,7 +8,6 @@ module Libr
 		def self.register_package xmlns, pkg
 			@@packages[xmlns] = pkg
 		end
-
 		
 		def self.inherited subcl			
 			pkg = @@packages[subcl.get_xmlns]
