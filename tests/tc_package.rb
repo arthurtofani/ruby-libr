@@ -1,5 +1,6 @@
 require "../lib/libr/document"
 require "../lib/libr/package_manager"
+require "../lib/libr/package_output"
 require "../lib/libr/package"
 require 'fileutils'
 require 'test/unit'
@@ -29,4 +30,15 @@ class TestPackage < Test::Unit::TestCase
 		package_manager.create_logfile "mcq"
 		assert_equal(true, package_manager.installed?("mcq"))
 	end
+
+	def test_load_package
+		package_manager = create_package_manager
+		package_manager.load_package @xmlns
+		binding.pry
+		assert_equal 1, package_manager.get_packages.keys.count
+		assert_equal 2, package_manager.get_package_outputs(@xmlns).keys.count
+	end
+
+
+
 end

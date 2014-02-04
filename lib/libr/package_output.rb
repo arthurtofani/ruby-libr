@@ -1,35 +1,26 @@
-require './package'
 module Libr
 	class PackageOutput
 		@@name = nil
-		@@xmlns = nil
-		@@packages = {}
-
-		def self.register_package xmlns, pkg
-			@@packages[xmlns] = pkg
-		end
+		@@namespace = nil
 		
-		def self.inherited subcl			
-			pkg = @@packages[subcl.get_xmlns]
-			if pkg
-				pkg.register_output subcl
-			end
-			#@@packages[xmlns] = pkg
-		end
-
 		def self.set_name name
 			@@name = name
 		end
-		def self.set_xmlns xmlns
-			@@xmlns = xmlns
+		def self.set_namespace namespace
+			@@namespace = namespace
 		end
 		def self.get_name
 			@@name
 		end
-		def self.get_xmlns
-			@@xmlns
+		def self.get_namespace
+			@@namespace
 		end
 
+		def self.inherited subcl			
+			Libr::PackageManager.register_output subcl
+		end
+
+		#receives a nokogiri's element and returns another thing
 		def convert content
 			return content
 		end

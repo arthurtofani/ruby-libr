@@ -4,6 +4,6 @@
 	<description>
 		Describes multiple choice questions, containing questions, answers (signed with right and wrong) and solutions.
 	</description>
-	<schema>mcq.xsd<schema>
-	<namespace>http://tofani.com.br/libr/packages/mcq<namespace>
+	<schema>mcq.xsd</schema>
+	<namespace>http://tofani.com.br/libr/packages/mcq</namespace>
 </libr-package>

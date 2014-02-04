@@ -27,7 +27,7 @@ module Libr
 		# carrega o arquivo principal do livro
 		def load_file file
 			fl = File.join(@source_path, file)
-			puts "Carregando arquivo #{fl.to_s}"
+			#puts "Carregando arquivo #{fl.to_s}"
 			@doc = Nokogiri::XML(File.open(fl))
 		end
 

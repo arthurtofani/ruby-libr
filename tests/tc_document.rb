@@ -1,6 +1,7 @@
 require "../lib/libr/document"
 require "../lib/libr/package_manager"
 require "../lib/libr/package"
+require "../lib/libr/package_output"
 
 require 'test/unit'
 

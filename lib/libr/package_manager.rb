@@ -3,12 +3,38 @@ require 'zip/zipfilesystem'
 require 'fileutils'
 module Libr
 	class PackageManager
+		@@packages = {}
+		@@package_outputs = {}
+
+		def self.register_package pkg
+			@@packages[pkg.get_xmlns] = pkg
+		end
+		def self.register_output pkg_out
+			namespace = pkg_out.get_namespace
+			binding.pry
+			@@package_outputs[namespace] = {} if @@package_outputs[namespace].nil?
+			@@package_outputs[namespace][pkg_out.get_name] = pkg_out
+		end		
+
+		def self.get_output namespace, package_output
+			return @@package_outputs[namespace][package_output].new
+		end
+
+		def get_packages
+			return @@packages
+		end
+		def get_package_outputs namespace
+			return @@package_outputs[namespace]
+		end		
+
+
 		attr_accessor :packages, :package_path, :fetch_errors
 		def initialize package_path
 			@packages = []
 			@fetch_errors = []
 			@package_path = package_path
 		end
+
 
 
 		def installed? xmlns
@@ -88,14 +114,14 @@ module Libr
 
 		end		
 
-		def load_package xmlns
-			package_name = "blabla" # pega do xml
+		def load_package xmlns			
+			 f = File.join(get_package_path(xmlns), "*.rb")
 
-			# cria o install.log
-			# ...
+			 Dir[f.to_s].each {|file| require file }
+
 
 			# adiciona o pacote
-			# require File.join(package_path(xmlns), package_name)
+			
 		end
 
 		def update xmlns_list
