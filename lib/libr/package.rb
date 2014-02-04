@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'libxml'
 module Libr
 
 	# This class should be inherited by others to create new packages with abstract descriptions
@@ -25,7 +26,12 @@ module Libr
 		def self.get_namespace
 			@@namespace
 		end
-		
+		def local_folder
+			a = self.class.instance_methods(false).map { |m| 
+			  self.class.instance_method(m).source_location.first
+			}.uniq.first	
+			return File.dirname(a)
+		end
 
 		
 

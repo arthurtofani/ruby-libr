@@ -20,6 +20,7 @@ module Libr
 			load_file file
 			read_include_files
 			read_pkg_namespaces
+			load_packages
 			load_environments			
 			#load_packages			
 		end
@@ -38,7 +39,9 @@ module Libr
 		# carrega os pacotes para a memória: os pacotes do CORE e os específicos da aplicação
 		def load_packages
 			@package_manager = Libr::PackageManager.new(File.join(@root_path, "packages"))	if @package_manager==nil
-			@package_manager.load @namespaces
+			@namespaces.each do |ns| 
+				@package_manager.load_package ns
+			end
 		end
 		
 		# baixa e instala pacotes de dependências
@@ -85,5 +88,25 @@ module Libr
 			Libr::Environment.set_environment @root_path, env_path, @doc, name
 		end
 
+		def validate_doc
+			validate_doc_rec @doc
+		end
+
+private
+		def validate_doc_rec el
+			el.elements.each do |elmt|
+				validate_doc_rec elmt
+			end
+			str = el.to_s.split(">")[0][/xmlns=".*?"/].split("=")[1].gsub("\"", "") rescue nil
+			if str
+				cl = package_manager.get_package str
+				if cl
+					
+					cl.new.validate el
+				end
+			end			
+		end		
+
 	end
 end
+

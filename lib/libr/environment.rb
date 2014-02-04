@@ -49,9 +49,8 @@ module Libr
 				proc = @processors[str]
 				return if proc.nil?
 
-			end
-			
-		end		
+			end			
+		end
 
 		def create_file page, hsh
 			template = hsh[:template]

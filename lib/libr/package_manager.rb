@@ -22,6 +22,10 @@ module Libr
 		def get_packages
 			return @@packages
 		end
+		def get_package name
+			return @@packages[name]
+		end
+
 		def get_package_outputs namespace
 			return @@package_outputs[namespace]
 		end		
@@ -108,10 +112,6 @@ module Libr
 			FileUtils.rm_rf path
 		end
 
-		def load xmlns_list
-			load_core_packages
-
-		end		
 
 		def load_package xmlns			
 			 f = File.join(get_package_path(xmlns), "*.rb")

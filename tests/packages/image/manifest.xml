@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>image</name>
+	<namespace>image</namespace>
+	<description>
+		Describes simple images
+	</description>
+	<schema>image.dtd</schema>	
+</libr-package>

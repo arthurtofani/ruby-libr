@@ -43,8 +43,16 @@ class TestPackage < Test::Unit::TestCase
 		document = test_read_pkg_namespaces
 		document.load_environments
 		assert_equal(2, document.environments.count)
+		document
 	end
 
+	def test_validation
+		document = Libr::Document.new ".", "./source/"
+		document.load "inicial.xml"
+
+		document.validate_doc
+		#assert_equal(2, document.environments.count)
+	end
 
 
 end
