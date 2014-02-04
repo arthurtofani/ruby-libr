@@ -23,7 +23,7 @@ class TestPackage < Test::Unit::TestCase
 	def test_read_include_files
 		# check before
 		document = test_load_file
-		assert_equal(4, document.doc.css("include").count)
+		assert_equal(1, document.doc.css("include").count)
 		
 		# check after
 		document.read_include_files
@@ -35,8 +35,14 @@ class TestPackage < Test::Unit::TestCase
 	def test_read_pkg_namespaces		
 		document = test_read_include_files
 		document.read_pkg_namespaces
-		assert_equal(4, document.namespaces.count)
+		assert_equal(2, document.namespaces.count)
 		document
+	end
+
+	def test_load_environments
+		document = test_read_pkg_namespaces
+		document.load_environments
+		assert_equal(2, document.environments.count)
 	end
 
 

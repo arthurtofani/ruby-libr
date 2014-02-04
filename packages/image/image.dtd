@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT image (credits, description)>
+<!ATTLIST image
+          file CDATA #REQUIRED
+          xmlns CDATA #REQUIRED>
+<!ELEMENT credits (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST description
+          lang CDATA #REQUIRED>

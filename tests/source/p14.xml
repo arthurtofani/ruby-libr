@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section type="page" id="pg_14">
-	<title>14</title>				
-
-	<resource xmlns="http://atheva.com.br/libr/packages/questions.zip" id="questionario" store="true">
-		<question_group group="questionario_principal" ol-type="decimal">
-			<!-- aqui pode ir conteúdo normal...-->
-			<generic>Leia este texto... bla bla...</generic> 
-			<question id="q_1" prefix="1">
-				Faça um diagnóstico para descobrir em que você tem gastado o seu dinheiro
-			</question>
-			
-			<question_group ol-type="alpha">
-				<question id="q_1_a" prefix="a">
-					Quanto você recebe e mesada?
-				</question>
-				<answer type="text" lines="2"></answer>
-				
-				<question id="q_1_b">
-					Quanto você gasta?
-				</question>
-				<answer type="text" lines="2"></answer>
-				
-				<question id="q_1_c">
-					Quanto sobra da sua mesada no final do mês?
-				</question>
-				<answer type="text" lines="2"></answer>
-				
-				<question>
-					Se você não recebe mesada, procure se lembrar de algum dinheiro que tenha ganhado no mês e anote.
-				</question>
-				<answer type="text" lines="2"></answer>
-				
-			</question_group>
-
-		</question_group>			
-	</resource>
+	<title>Pagina 14</title>				
+	<p>Teste de conteúdo de texto aqui mesmo, nada de mais</p>
+	<image xmlns="image" file="/imgs/imagem1.jpg">
+		<credits>
+			Arquivo blablabla
+		</credits>
+		<description lang="pt-BR">
+			Esta é uma imagem
+		</description>
+	</image>
 
 
 </section>

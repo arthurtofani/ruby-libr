@@ -115,13 +115,13 @@ module Libr
 
 		def load_package xmlns			
 			 f = File.join(get_package_path(xmlns), "*.rb")
-
 			 Dir[f.to_s].each {|file| require file }
-
-
-			# adiciona o pacote
-			
 		end
+
+		def load_package_outputs xmlns			
+			f = File.join(get_package_path(xmlns), "outputs", "**", "*.rb")
+			Dir[f.to_s].each {|file| require file }
+		end		
 
 		def update xmlns_list
 			# verifica os pacotes q não foram baixados e atualiza
