@@ -7,14 +7,17 @@ module Libr
 		@@namespace = nil
 
 		def self.inherited subcl			
-			Libr::PackageManager.register_output subcl
+			#binding.pry
+
 		end
 
-		def self.set_name name
+		def self.set_name name			
 			@@name = name
 		end
 		def self.set_namespace namespace
+			return if !@@namespace.nil?			
 			@@namespace = namespace
+			Libr::PackageManager.register_package self
 		end
 		def self.get_name
 			@@name

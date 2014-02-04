@@ -8,6 +8,7 @@ module Libr
 		end
 		def self.set_namespace namespace
 			@@namespace = namespace
+			Libr::PackageManager.register_output self
 		end
 		def self.get_name
 			@@name
@@ -16,8 +17,9 @@ module Libr
 			@@namespace
 		end
 
-		def self.inherited subcl			
-			Libr::PackageManager.register_output subcl
+		def self.inherited subcl		
+			#binding.pry	
+			#Libr::PackageManager.register_output subcl
 		end
 
 		#receives a nokogiri's element and returns another thing

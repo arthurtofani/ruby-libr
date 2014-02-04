@@ -43,10 +43,10 @@ class Libr
 
 
 	def load_packages path
-		script_path = File.expand_path(File.join("#{path}", "packages"))
-		puts "Loading scripts at #{script_path}"
-		arr = Dir[File.join(script_path, "*.rb")]
-		arr.each {|file| load File.join(File.expand_path(script_path), File.basename(file)) }
+#		script_path = File.expand_path(File.join("#{path}", "packages"))
+#		puts "Loading scripts at #{script_path}"
+#		arr = Dir[File.join(script_path, "*.rb")]
+#		arr.each {|file| load File.join(File.expand_path(script_path), File.basename(file)) }
 	end
 
 	def build (path, environment=:all)

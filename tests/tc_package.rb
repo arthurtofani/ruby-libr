@@ -34,7 +34,6 @@ class TestPackage < Test::Unit::TestCase
 	def test_load_package
 		package_manager = create_package_manager
 		package_manager.load_package @xmlns
-		binding.pry
 		assert_equal 1, package_manager.get_packages.keys.count
 		assert_equal 2, package_manager.get_package_outputs(@xmlns).keys.count
 	end

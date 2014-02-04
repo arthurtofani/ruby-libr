@@ -6,18 +6,17 @@ module Libr
 		@@packages = {}
 		@@package_outputs = {}
 
-		def self.register_package pkg
-			@@packages[pkg.get_xmlns] = pkg
+		def self.register_package pkg			
+			@@packages[pkg.get_namespace] = pkg
 		end
 		def self.register_output pkg_out
 			namespace = pkg_out.get_namespace
-			binding.pry
 			@@package_outputs[namespace] = {} if @@package_outputs[namespace].nil?
-			@@package_outputs[namespace][pkg_out.get_name] = pkg_out
+			@@package_outputs[namespace][pkg_out.get_name.to_s] = pkg_out
 		end		
 
 		def self.get_output namespace, package_output
-			return @@package_outputs[namespace][package_output].new
+			return @@package_outputs[namespace][package_output.to_s].new
 		end
 
 		def get_packages

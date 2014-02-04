@@ -1,6 +1,6 @@
 class Mcq < Libr::Package
 	set_name "mcq"
-	set_namespace "http://tofani.com.br/libr/packages/mcq"
+	set_namespace "mcq"
 
 	def validate content
 		return true ## validate here		
@@ -10,8 +10,8 @@ end
 
 
 class McqOutputHTML < Libr::PackageOutput
-	set_name "html"
-	set_namespace "http://tofani.com.br/libr/packages/mcq"
+	set_name :html
+	set_namespace "mcq"
 
 	def convert content
 		return content
@@ -19,8 +19,8 @@ class McqOutputHTML < Libr::PackageOutput
 end
 
 class McqOutputLatex < Libr::PackageOutput
-	set_name "latex"
-	set_namespace "http://tofani.com.br/libr/packages/mcq"
+	set_name :latex
+	set_namespace "mcq"
 
 	def convert content
 		return content
