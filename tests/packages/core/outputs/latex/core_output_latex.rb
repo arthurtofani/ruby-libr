@@ -1,6 +1,6 @@
-class ImageOutputLatex < Libr::PackageOutput
+class McqOutputLatex < Libr::PackageOutput
 	set_name :latex
-	set_namespace "image"
+	set_namespace "core"
 
 	def convert content
 		return "\\graphics{...}"

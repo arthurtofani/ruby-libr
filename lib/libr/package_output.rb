@@ -16,7 +16,12 @@ module Libr
 		def self.get_namespace
 			@@namespace
 		end
-
+		def local_folder
+			a = self.class.instance_methods(false).map { |m| 
+			  self.class.instance_method(m).source_location.first
+			}.uniq.first	
+			return File.dirname(a)
+		end
 		def self.inherited subcl		
 			#binding.pry	
 			#Libr::PackageManager.register_output subcl

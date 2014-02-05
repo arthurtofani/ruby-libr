@@ -5,9 +5,10 @@ module Libr
 	class PackageManager
 		@@packages = {}
 		@@package_outputs = {}
-
-		def self.register_package pkg			
-			@@packages[pkg.get_namespace] = pkg
+		@@package_names = {}
+		def self.register_package pkg, name, namespace
+			@@packages[namespace] = pkg
+			@@package_names[namespace] = name
 		end
 		def self.register_output pkg_out
 			namespace = pkg_out.get_namespace
@@ -22,6 +23,9 @@ module Libr
 		def get_packages
 			return @@packages
 		end
+		def self.get_packages
+			return @@packages
+		end
 		def get_package name
 			return @@packages[name]
 		end
@@ -29,6 +33,11 @@ module Libr
 		def get_package_outputs namespace
 			return @@package_outputs[namespace]
 		end		
+
+		def self.get_package_outputs namespace
+			return @@package_outputs[namespace]
+		end		
+
 
 
 		attr_accessor :packages, :package_path, :fetch_errors
@@ -113,7 +122,7 @@ module Libr
 		end
 
 
-		def load_package xmlns			
+		def load_package xmlns
 			 f = File.join(get_package_path(xmlns), "*.rb")
 			 Dir[f.to_s].each {|file| require file }
 		end

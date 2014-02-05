@@ -1,9 +1,8 @@
 class McqOutputHTML < Libr::PackageOutput
 	set_name :html
-	set_namespace "image"
+	set_namespace "core"
 
 	def convert content
-		binding.pry
 		return content
 	end
 end

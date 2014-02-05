@@ -4,28 +4,17 @@ module Libr
 
 	# This class should be inherited by others to create new packages with abstract descriptions
 	class Package 
-		@@name = nil
-		@@namespace = nil
-
+		@@namespace
 		def self.inherited subcl			
 			#binding.pry
 
 		end
 
-		def self.set_name name			
-			@@name = name
-		end
-		def self.set_namespace namespace
-			return if !@@namespace.nil?			
+		def self.register name, namespace
 			@@namespace = namespace
-			Libr::PackageManager.register_package self
+			Libr::PackageManager.register_package self, name, namespace
 		end
-		def self.get_name
-			@@name
-		end
-		def self.get_namespace
-			@@namespace
-		end
+		
 		def local_folder
 			a = self.class.instance_methods(false).map { |m| 
 			  self.class.instance_method(m).source_location.first
@@ -44,7 +33,7 @@ module Libr
 
 		# Converts the input content using selected output
 		def process output_name, content
-			output = Libr::PackageManager.get_output @@namespace, output_name			
+			output = Libr::PackageManager.get_output @@namespace, output_name
 			output.convert content
 		end
 	end	

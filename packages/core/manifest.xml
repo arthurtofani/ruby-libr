@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libr-package>
+	<name>core</name>
+	<namespace>core</namespace>
+	<description>
+		Libr core processor
+	</description>
+	<schema></schema>	
+</libr-package>

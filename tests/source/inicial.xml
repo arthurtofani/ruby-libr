@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<section type="collection" id="colecao_dsop" lang="pt-BR" xmlns="core/1.0/core.zip">
+<section type="collection" id="colecao_dsop" lang="pt-BR" xmlns="core">
 	<title>Coleção de livros</title>
 	<section type="book" id="livro_1">
 		<title>Livro 1</title>

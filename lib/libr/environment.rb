@@ -24,18 +24,28 @@ module Libr
 			@root_path = root_path
 			@path = path.clone
 			@doc = doc
-			@name = name
-			@processors = {}
+			@name = name			
 			@assets = Libr::Assets.new
+			@processors = get_default_processors
 		end
 
 		def set_processor xmlns, output_name
-			@processors[xmlns] = output_name.to_s
+			new_proc = PackageManager.get_package_outputs(xmlns.to_s)[@name] rescue nil
+			@processors[xmlns.to_s] = new_proc if new_proc			
+		end
+
+		def get_default_processors
+			proc = {}
+			PackageManager.get_packages.keys.each do |key|
+				deflt = PackageManager.get_package_outputs(key)[@name] rescue nil
+				proc[key] = deflt
+			end
+			proc
 		end
 
 		def process!
-			@output = @doc
-			process_namespaces_rec @output.doc
+			@output = @doc.doc
+			process_namespaces_rec @output
 			
 		end
 
@@ -44,10 +54,16 @@ module Libr
 			el.elements.each do |elmt|
 				process_namespaces_rec elmt
 			end
-			str = el.to_s[/xmlns=".*?"/].split("=")[1].gsub("\"", "") rescue nil
+			str = el.to_s.split(">").first[/xmlns=".*?"/].split("=")[1].gsub("\"", "") rescue nil
+			
 			if str
-				proc = @processors[str]
+				proc = @processors[str]				
 				return if proc.nil?
+				begin
+				proc.new.convert el
+				rescue
+					binding.pry
+				end
 
 			end			
 		end

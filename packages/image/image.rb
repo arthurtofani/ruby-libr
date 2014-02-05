@@ -1,12 +1,16 @@
 class Image < Libr::Package
-	set_name "image"
-	set_namespace "image"
+	register "image", "image"
 
 	def validate content
-		binding.pry
+		
 		file = "image.dtd"
-		dtd = Nokogiri::DTD(File.open(File.join(file)))
-		content.validate dtd
-		return false ## validate here		
+		file = File.open(File.join(local_folder, file))
+		
+		
+		dtd = LibXML::XML::Dtd.new(File.read(file))
+		doc = LibXML::XML::Document.string(content.to_s, :options => LibXML::XML::Parser::Options::NOWARNING)
+		
+		a = doc.validate dtd
+		return !!a ## validate here		
 	end
 end

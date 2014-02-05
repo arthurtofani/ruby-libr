@@ -1,7 +1,6 @@
 class Image < Libr::Package
-	set_name "image"
-	set_namespace "image"
-
+	register "image", "image"
+	
 	def validate content
 		
 		file = "image.dtd"
