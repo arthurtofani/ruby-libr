@@ -1,4 +1,4 @@
-class McqOutputLatex < Libr::PackageOutput
+class CoreOutputLatex < Libr::PackageOutput
 	set_name :latex
 	set_namespace "core"
 
